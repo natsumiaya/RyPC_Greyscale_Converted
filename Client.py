@@ -50,12 +50,11 @@ thread = []
 nfile = narray / nworker
 
 for nthread in range(0, nworker):
-    thread.append(threading.Thread(target=totheserver, args=(arrayfile, nfile, outputpath, connect[nthread])))
-    thread[nthread].start()
     if nthread == nworker-1:
         if narray % nworker != 0:
             nfile +=1
-
+    thread.append(threading.Thread(target=totheserver, args=(arrayfile, nfile, outputpath, connect[nthread])))
+    thread[nthread].start()
 
 for fthread in range (0, nworker):
     thread[fthread].join()
