@@ -7,7 +7,7 @@ class MyService(rpyc.Service):
     def exposed_open(self,filePath, mode = 'wb'):
         return open(filePath,mode)
     def exposed_dothemagic(self, filename):
-            if filename.endswith('.png'):
+            if filename.endswith('.png') or filename.endswith('.jpg'):
                 print "Receiving.."
                 img = cv2.imread(filename)
                 print "Converting..."
